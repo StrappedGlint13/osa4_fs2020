@@ -9,7 +9,7 @@ blogRouter.get('/', (request, response) => {
       })
   })
   
-  blogRouter.post('/', (request, response) => {
+blogRouter.post('/', (request, response) => {
     const body = new Blog(request.body)
 
     const new_blog = new Blog({
