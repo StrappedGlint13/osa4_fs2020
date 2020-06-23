@@ -74,10 +74,55 @@ const mostBlogs = (blogs) => {
 
     return most_blogs
 }
+
+
+const mostLikes = (blogs) => {
+    if (blogs.length < 0) {
+        return
+    }
+
+    let listed = false
+
+    const authors = []
+
+        blogs.forEach(blog => 
+            {
+                for(var i = 0; i < authors.length; i++) {    
+                        if (blog.author === authors[i].name) {      
+                            listed = true
+                            var index = i             
+                        } else {
+                            listed = false   
+                        }
+                }
+
+                if (listed) {
+                    console.log(authors[index].likes)
+                    authors[index].likes = authors[index].likes + blog.likes
+                } else {
+                    authors.push({name: blog.author, likes: blog.likes})
+                }               
+                               
+            })
+    
+
+    console.log(authors)
+    let most_likes = authors[1]
+
+    authors.forEach(author => 
+        {
+            if(author.likes > most_likes.likes) {
+                most_likes = author
+            } 
+        })
+
+    return most_likes
+}
   
   module.exports = {
     dummy,
     totalLikes,
     favoriteBlog,
-    mostBlogs
+    mostBlogs,
+    mostLikes
   }
