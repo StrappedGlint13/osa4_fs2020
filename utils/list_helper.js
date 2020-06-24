@@ -61,8 +61,6 @@ const mostBlogs = (blogs) => {
                                
             })
     
-
-    console.log(authors)
     let most_blogs = authors[1]
 
     authors.forEach(author => 
@@ -97,7 +95,6 @@ const mostLikes = (blogs) => {
                 }
 
                 if (listed) {
-                    console.log(authors[index].likes)
                     authors[index].likes = authors[index].likes + blog.likes
                 } else {
                     authors.push({name: blog.author, likes: blog.likes})
@@ -106,7 +103,6 @@ const mostLikes = (blogs) => {
             })
     
 
-    console.log(authors)
     let most_likes = authors[1]
 
     authors.forEach(author => 
