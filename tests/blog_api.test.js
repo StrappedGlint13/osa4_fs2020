@@ -39,9 +39,38 @@ describe('GET tests', () => {
         expect(response.body[0].id).toBeDefined()
       })
 
-    afterAll(() => {
-    mongoose.connection.close()
-    })
 })
 
+describe('POST tests', () => {
+    test('a valid blog can be added', async () => {
+        const newBlog = {
+          title: 'Kuudes aisti',
+          author: 'Bruce Willis',
+          url: 'kuudesaisti.fi',
+          likes: 99999999,
+        }
+      
+        await api
+          .post('/api/blogs')
+          .send(newBlog)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+      
+        const response = await api.get('/api/blogs')
+      
+        const contents = response.body.map(r => r.title)
+      
+        expect(response.body).toHaveLength(initialBlogs.length + 1)
+        
+        expect(contents).toContain(
+            'Kuudes aisti'
+        )
+      })
+
+
+})
+
+afterAll(() => {
+    mongoose.connection.close()
+    })
 
