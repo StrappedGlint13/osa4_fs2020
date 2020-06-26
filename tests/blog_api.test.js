@@ -67,6 +67,26 @@ describe('POST tests', () => {
         )
       })
 
+      test('when likes are undefined', async () => {
+        const newBlog = {
+          title: 'Kuudes aisti',
+          author: 'Bruce Willis',
+          url: 'kuudesaisti.fi',
+        }
+      
+        await api
+          .post('/api/blogs')
+          .send(newBlog)
+          .expect(200)
+          .expect('Content-Type', /application\/json/)
+      
+        const response = await api.get('/api/blogs')
+      
+        const likes_zero = response.body.find(r => r.title === 'Kuudes aisti')
+      
+        expect(likes_zero.likes).toBe(0)
+      })
+
 
 })
 
