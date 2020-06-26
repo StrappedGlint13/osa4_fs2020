@@ -23,6 +23,10 @@ blogRouter.post('/', async (request, response, next) => {
       if (new_blog.likes === undefined || new_blog.likes === null) {
         new_blog.likes = 0
       }
+
+      if (new_blog.title === undefined || new_blog.url == undefined) {
+        return response.status(400).end()
+      }
       const savedBlog = await new_blog.save()    
       response.json(savedBlog.toJSON())  
       } catch(exception) {    

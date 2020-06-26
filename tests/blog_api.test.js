@@ -88,6 +88,18 @@ describe('POST tests', () => {
       })
 
 
+      test('when title or url are undefined', async () => {
+        const newBlog = {
+          title: 'Kuudes aisti',
+          author: 'Bruce Willis',
+        }
+      
+        await api
+          .post('/api/blogs')
+          .send(newBlog)
+          .expect(400)
+      })
+
 })
 
 afterAll(() => {
