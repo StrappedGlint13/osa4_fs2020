@@ -3,23 +3,39 @@ const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
+const User = require('../models/user')
 
 const initialBlogs = [ 
     { title: "React patterns", author: "Michael Chan", url: "https://reactpatterns.com/", likes: 7, __v: 0 }, 
     { title: "Go To Statement Considered Harmful", author: "Edsger W. Dijkstra", url: "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html", likes: 5, __v: 0 }, 
 ]
 
+const initialUsers = [
+  { username: "madde", name: "Matias B", password: "itsmybusiness" },
+  { username: "hel", name: "art hel", password: "arthelbusiness" }
+]
+
+
 beforeEach(async () => {
     await Blog.deleteMany({})
+    await User.deleteMany({})
   
     let blogObject = new Blog(initialBlogs[0])
     await blogObject.save()
   
     blogObject = new Blog(initialBlogs[1])
     await blogObject.save()
+
+    let userObject = new User(initialUsers[0])
+    await userObject.save()
+  
+    userObject = new User(initialUsers[1])
+    await userObject.save()
+
+
   })
 
-describe('GET tests', () => {
+describe('GET BLOG tests', () => {
     test('blogs are returned as json', async () => {
     await api
         .get('/api/blogs')
@@ -41,7 +57,7 @@ describe('GET tests', () => {
 
 })
 
-describe('POST tests', () => {
+describe('POST BLOG tests', () => {
     test('a valid blog can be added', async () => {
         const newBlog = {
           title: 'Kuudes aisti',
@@ -101,6 +117,26 @@ describe('POST tests', () => {
       })
 
 })
+
+
+describe('POST USER tests', () => {
+  test('an invalid blog cannot be added', async () => {
+      
+    const invalidUser = {
+        name: "okey",
+        password: "10"
+      }
+    
+      const result = await api
+        .post('/api/users')
+        .send(invalidUser)
+        .expect(400)
+        .expect('Content-Type', /application\/json/)
+
+    expect(result.body.error).toContain('username missing')
+
+    })
+  })
 
 afterAll(() => {
     mongoose.connection.close()
