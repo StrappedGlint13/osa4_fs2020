@@ -2,8 +2,9 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "okey",
-    "author": "harari",
-    "url": "sapiens.com",
-    "likes": 1000
+    "title": "second",
+    "author": "book",
+    "url": "dotiens.fi",
+    "likes": 24,
+    "userId": "5efe05cfc856a62a498ea96c"
 }
