@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 
 {
-    "title": "second",
+    "title": "third",
     "author": "book",
-    "url": "dotiens.fi",
-    "likes": 24,
-    "userId": "5efe05cfc856a62a498ea96c"
+    "url": "modiens.fi",
+    "likes": 999
 }
