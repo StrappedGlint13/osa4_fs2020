@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGkiLCJpZCI6IjVmMDJkMGJlM2Q2ZjZmMWU5MjJhY2JlNSIsImlhdCI6MTU5NDA0NjM1NH0.KTcTjCvE6bR-diHv7hWySCWoCBgTNRgyW4bk_M4gMho
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9sbGkiLCJpZCI6IjVmMDM0NmRlMGIwNzNiMjRjYTM0YzVmMCIsImlhdCI6MTU5NDA1MDI3OX0.Ht_ueeYhUsoIOJzym3B-ivSdMSSciNKj6fG1LAW6m8o
 
 {
-    "title": "fourth",
-    "author": "book",
-    "url": "modiens.fi",
-    "likes": 999
+    "title": "matsooni",
+    "author": "kirja",
+    "url": "joopajoo.fi",
+    "likes": 1000
 }
