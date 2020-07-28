@@ -16,6 +16,7 @@ const initialUsers = [
 ]
 
 
+
 beforeEach(async () => {
     await Blog.deleteMany({})
     await User.deleteMany({})
@@ -59,15 +60,28 @@ describe('GET BLOG tests', () => {
 
 describe('POST BLOG tests', () => {
     test('a valid blog can be added', async () => {
-        const newBlog = {
-          title: 'Kuudes aisti',
-          author: 'Bruce Willis',
-          url: 'kuudesaisti.fi',
-          likes: 99999999,
-        }
-      
+      const res = await api.get('/api/users')
+      const user = res.body[0]
+      user._id = user.id
+
+      const newBlog = {
+        title: 'Kuudes aisti',
+        author: 'Bruce Willis',
+        url: 'kuudesaisti.fi',
+        likes: 99999999,
+        userId: user
+      }
+
+        const tok = await api 
+        .post('/api/login')
+        .send(initialUsers[0])
+        
+        const token = tok.body.token
+        console.log(tok.body)
+
         await api
           .post('/api/blogs')
+          .set('Authorization', `bearer ${token}`)
           .send(newBlog)
           .expect(200)
           .expect('Content-Type', /application\/json/)
@@ -89,10 +103,17 @@ describe('POST BLOG tests', () => {
           author: 'Bruce Willis',
           url: 'kuudesaisti.fi',
         }
+
+        const tok = await api 
+        .post('/api/login')
+        .send({ username: 'heli', password: '$2b$10$lVsRq.x5R7cDSuEv6nbxXerqkAvp3dYjeCSylZnQ4I9ufw/LR2Eu6' })
+        
+        const token = tok.body.token
       
         await api
           .post('/api/blogs')
           .send(newBlog)
+          .set('Authorization', 'bearer ' + token)
           .expect(200)
           .expect('Content-Type', /application\/json/)
       

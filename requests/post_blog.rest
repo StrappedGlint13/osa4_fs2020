@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9sbGkiLCJpZCI6IjVmMDM0NmRlMGIwNzNiMjRjYTM0YzVmMCIsImlhdCI6MTU5NDA1MDI3OX0.Ht_ueeYhUsoIOJzym3B-ivSdMSSciNKj6fG1LAW6m8o
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGkiLCJpZCI6IjVmMDM3NDJhNjExZGI5NDAyMGMxZmIwZiIsImlhdCI6MTU5NDA2MTg4M30.QS1YyL-Ri82PA4ndZCMwfUZCZJZTf6cpzhYmLcHomQQ
 
 {
-    "title": "matsooni",
-    "author": "kirja",
-    "url": "joopajoo.fi",
-    "likes": 1000
+    "title": "sisustuskirja",
+    "author": "heli V",
+    "url": "helinsome.fi",
+    "likes": 1000000 
 }
