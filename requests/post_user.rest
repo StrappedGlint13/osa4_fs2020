@@ -5,6 +5,6 @@ Content-Type: application/json
 
         "username": "heli",
         "name": "heli",
-        "password": "salasana"
+        "password": "heli"
       
 }

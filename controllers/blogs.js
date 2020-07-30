@@ -56,7 +56,9 @@ blogRouter.post('/', async (request, response, next) => {
   })
 
   blogRouter.delete('/:id', async (request, response, next) => {
+    try {
 
+    
     const blog = await Blog.findById(request.params.id)
 
     const token = request.token
@@ -81,7 +83,9 @@ blogRouter.post('/', async (request, response, next) => {
     } else {
       response.status(400).json({ error: 'user does not exists'})
     }
-    
+  } catch(exception) {
+    next(exception) 
+  }
   })
 
   blogRouter.put('/:id', async (request, response, next) => {
