@@ -90,11 +90,21 @@ blogRouter.post('/', async (request, response, next) => {
 
   blogRouter.put('/:id', async (request, response, next) => {
     const body = request.body
-   
-    try {
-    await Blog
-    .findByIdAndUpdate(request.params.id, body)
-    response.json()
+
+    const blog = {
+      title: body.title,
+      author: body.author,
+      url: body.url,
+      likes: body.likes,
+    }
+    try {  
+
+  
+  const updatedBlog = await Blog
+    .findByIdAndUpdate(request.params.id, blog, {new:true})
+    .populate('User', { username: 1, name: 1})
+    response.json(updatedBlog.toJSON())
+    
   } catch(exception) {    
     next(exception)  
   }
