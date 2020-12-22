@@ -1,10 +1,10 @@
-POST http://localhost:3003/api/blogs
+POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGkiLCJpZCI6IjVmMDM3NDJhNjExZGI5NDAyMGMxZmIwZiIsImlhdCI6MTU5NDA2MTg4M30.QS1YyL-Ri82PA4ndZCMwfUZCZJZTf6cpzhYmLcHomQQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6IjVmNDYwY2EzYmU0OTJhMWQxOTgxNGMyMiIsImlhdCI6MTYwODA2ODA3OX0.uo4Yx6VuuahMyC_gk_WeXjeZeeswpfENSJljx0ZnXI4
 
 {
     "title": "sisustuskirja",
     "author": "heli V",
     "url": "helinsome.fi",
-    "likes": 1000000 
+    "likes": 1000000
 }
